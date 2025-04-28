@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://fonts.googleapis.com/css?family=Baloo%202' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Nunito' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet'>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="./images/PetSocietyMainLogo.png">
+    <title>Pet Society | Home</title>
+</head>
+
+<body>
+    <section id="NavSection">
+
+    </section>
+
+    <section id="HeroSection">
+        <div class="hero-content">
+            <div class="hero-text-left">
+                <h1>Welcome to Pet Society!</h1>
+                <p>Find your new furry friend today.</p>
+                <a href="./pet-adopt.html" class="adopt-btn">Adopt Now!</a>
+            </div>
+            <div class="image-right">
+                <img src="./images/cat-sad.png" alt="">
+            </div>
+        </div>
+        <div class="hero-background">
+            <img src="./images/cat-dog.png" alt="" srcset="">
+        </div>
+    </section>
+
+    <section id="AboutSection">
+        <div class="about-container">
+            <h2>About Pet Society</h2>
+            <p>Welcome to Pet Society, a place where pet lovers unite! Our mission is to create a loving and supportive
+                community for pet owners and animal enthusiasts. Whether you're looking to adopt, find pet care tips, or
+                connect with fellow pet lovers, we’ve got you covered.</p>
+            <p>Join us in making the world a better place for our furry friends!</p>
+        </div>
+    </section>
+
+    <section id="BlogSection">
+        <div class="blog-container">
+            <h2>Latest News & Updates</h2>
+            <div id="blogGrid" class="blog-grid">
+
+            </div>
+        </div>
+    </section>
+
+
+    <section id="FeatureSection">
+        <h2>Our Features</h2>
+        <div class="features">
+            <div class="feature-container">
+                <img src="./images/icons/adopt.png" alt="" class="feature-icon">
+                <h3>Adopt a Pet</h3>
+                <p>Find you perfect furry friend today!</p>
+                <a href="./pet-adopt.html" class="btn"> Learn More</a>
+            </div>
+            <div class="feature-container">
+                <img src="./images/icons/volunteer.png" alt="" class="feature-icon">
+                <h3>Volunteer with Us</h3>
+                <p>Join our community of animal lovers.</p>
+                <a href="./get-involved.html" class="btn">Get Involved</a>
+            </div>
+            <div class="feature-container">
+                <img src="./images/icons/donation.png" alt="" class="feature-icon">
+                <h3>Donate</h3>
+                <p>Your support helps pets in need.</p>
+                <a href="./donation.html" class="btn">Donate Now</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="GallerySection">
+        <h2>Gallery</h2>
+        <div class="gallery-container">
+            <div class="gallery-slide"></div> <!-- Will be filled dynamically -->
+        </div>
+        <button class="gallery-prev" onclick="moveSlide(-1)">&#10094;</button>
+        <button class="gallery-next" onclick="moveSlide(1)">&#10095;</button>
+    </section>
+
+    <section id="Testimonials">
+        <h2>Success Stories</h2>
+        <div class="testimonial-cards">
+            <div class="testimonial-card">
+                <p>"We found the perfect companion! Thank you, Pet Society!"</p>
+                <h4>Jackloys Bading</h4>
+            </div>
+            <div class="testimonial-card">
+                <p>"We found the perfect companion! Thank you, Pet Society!"</p>
+                <h4>Putchee</h4>
+            </div>
+            <div class="testimonial-card">
+                <p>"We found the perfect companion! Thank you, Pet Society!"</p>
+                <h4>Aaron Ryan Topi</h4>
+            </div>
+            <div class="testimonial-card">
+                <p>"We found the perfect companion! Thank you, Pet Society!"</p>
+                <h4>Rock Jaze</h4>
+            </div>
+        </div>
+    </section>
+
+    <section id="FooterSection">
+
+    </section>
+    <script src="./index.js"></script>
+    <script>
+
+        const blogGrid = document.getElementById("blogGrid");
+        const blogSection = document.getElementById("BlogSection");
+
+        blogs.forEach(blog => {
+            const blogCard = document.createElement("div");
+            blogCard.classList.add("blog-card");
+
+            blogCard.innerHTML = `
+                <img src="${blog.image}" alt="${blog.title}">
+                <h3>${blog.title}</h3>
+                <p>${blog.content.substring(0, 100)}</p>
+                <button class="read-more">Read More</button>
+            `;
+
+            // Adding functionality for the "Read More" button
+            blogCard.querySelector(".read-more").addEventListener("click", function () {
+                let fullContent = document.getElementById(`full-content-${blog.title}`);
+
+                // If full content is already displayed, hide it
+                if (fullContent) {
+                    fullContent.classList.add("hide");
+                    setTimeout(() => fullContent.remove(), 100); // Wait for the transition before removing
+                    this.innerText = "Read More";
+                } else {
+                    // Otherwise, display the full content below the blog section
+                    fullContent = document.createElement("div");
+                    fullContent.id = `full-content-${blog.title}`;
+                    fullContent.classList.add("full-content");
+                    fullContent.innerHTML = `
+                        <h3>${blog.title}</h3>
+                        <p>${blog.content}</p>
+                    `;
+
+                    // Append the full content to the bottom of the section
+                    blogSection.appendChild(fullContent);
+                    setTimeout(() => fullContent.classList.remove("hide"), 10); // Delay for transition effect
+                    this.innerText = "Show Less";
+                }
+            });
+
+            blogGrid.appendChild(blogCard);
+        });
+
+
+
+
+
+
+    </script>
+
+
+</body>
+
+</html>

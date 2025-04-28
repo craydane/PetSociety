@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://fonts.googleapis.com/css?family=Baloo%202' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Nunito' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet'>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="adoption.css">
+    <link rel="stylesheet" href="pet-adopt-individual.css">
+    <link rel="icon" type="image/x-icon" href="./images/PetSocietyMainLogo.png">
+    <title>Pet Society | Adopt Pet</title>
+</head>
+<body>
+    <section id="NavSection">
+
+    </section>
+    <section id="PetSection">
+        <div class="pet-info">
+            <div> 
+                <img class="pet-image" alt="Pet Image" />
+            </div>
+            <div> 
+                <label for=""><h2>Name:</h2></label><h2 class="pet-name"></h2>
+            </div>
+            <div> 
+                <label for=""><h2>Age:</h2></label>
+                <p class="pet-age"></p>
+            </div>
+            <div > 
+                <label for=""><h2>Breed:</h2></label><p class="pet-breed"></p>
+            </div>
+           
+            
+            
+            
+        </div>
+        <div class="pet-form">
+            <h3>Adopt a Pet</h3>
+            <form id="adopt-form">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your name" required />
+                </div>
+        
+                <div class="form-group">
+                    <label for="email">Your Email</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required />
+                </div>
+        
+                <div class="form-group">
+                    <label for="phone">Your Phone Number</label>
+                    <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required />
+                </div>
+        
+                <div class="form-group">
+                    <label for="message">Why do you want to adopt this pet?</label>
+                    <textarea id="message" name="message" placeholder="Enter your message" rows="4" required></textarea>
+                </div>
+                
+                <button type="submit" class="btn">Submit Adoption Request</button>
+            </form>
+        </div>
+    </section>
+    <section id="FooterSection">
+
+    </section>
+    <script src="index.js"></script>
+    <script src="pet-adopt.js"></script>
+    <script>
+              const urlParams = new URLSearchParams(window.location.search);
+        const petName = urlParams.get('pet');
+        
+
+        const pet = pets.find(pet => pet.name === petName);
+        
+
+        if (pet) {
+            document.querySelector('.pet-name').textContent = pet.name;
+            document.querySelector('.pet-age').textContent = pet.age;
+            document.querySelector('.pet-breed').textContent = pet.breed;
+            document.querySelector('.pet-image').src = pet.image;
+        } else {
+
+            document.querySelector('.pet-info').innerHTML = "<p>Sorry, this pet is not available.</p>";
+        }
+        
+
+        document.getElementById("adopt-form").addEventListener("submit", function(event) {
+            event.preventDefault(); 
+            
+            const name = document.getElementById("name").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const phone = document.getElementById("phone").value.trim();
+            const message = document.getElementById("message").value.trim();
+            
+
+            if (!name || !email || !phone || !message) {
+                alert("Please fill in all required fields.");
+                return;
+            }
+
+
+            alert(`Thank you, ${name}! Your adoption request has been submitted.`);
+
+
+            document.getElementById("adopt-form").reset();
+
+            setTimeout(() => {
+                window.location.href = "index.html";  
+            }, 2000); 
+        });
+        </script>
+</body>
+</html>

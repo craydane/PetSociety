@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://fonts.googleapis.com/css?family=Baloo%202' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Nunito' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet'>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="volunteer.css">
+    <link rel="icon" type="image/x-icon" href="./images/PetSocietyMainLogo.png">
+    <title>Pet Society | Volunteer</title>
+</head>
+
+<body>
+    <section id="NavSection">
+
+    </section>
+
+    <section id="VolunteerSection">
+        <div class="volunteer-content">
+            <div class="volunteer-form">
+                <div class="volunteer-container">
+                    <h1>Become a Volunteer</h1>
+                    <p>Join our mission to help animals in need. Fill out the form below to get started!</p>
+                </div>
+                <div class="volunteer-container">
+                    <label for="name">Full Name:</label>
+                    <input type="text" id="name" placeholder="Full Name" required />
+                </div>
+                <div class="volunteer-container">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" placeholder="Email" required />
+                </div>
+                <div class="volunteer-container">
+                    <label for="mobile">Mobile Number:</label>
+                    <input type="tel" id="mobile" placeholder="ex. 0999-999-9999" required />
+                </div>
+                <div class="volunteer-container">
+                    <label for="role">Preferred Role:</label>
+                    <select id="role" required>
+                        <option value="animal-care">Animal Care</option>
+                        <option value="event-support">Event Support</option>
+                        <option value="fundraising">Fundraising</option>
+                        <option value="social-media">Social Media Promotion</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="volunteer-container">
+                    <label for="availability">Availability:</label>
+                    <input type="text" id="availability" placeholder="e.g., Weekends, Weekdays, Flexible" required />
+                </div>
+                <div class="volunteer-container">
+                    <label for="message">Why do you want to volunteer?</label>
+                    <textarea id="message" rows="4" placeholder="Tell us why..." required></textarea>
+                </div>
+                <button id="submitBtn">Submit</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="FooterSection">
+
+    </section>
+    <script src="./index.js"></script>
+    <script>
+        document.getElementById("mobile").addEventListener("input", function () {
+            let input = this.value.replace(/\D/g, "");
+            if (input.length <= 4) {
+                this.value = input;
+            } else if (input.length <= 7) {
+                this.value = input.replace(/(\d{4})(\d{0,3})/, "$1-$2");
+            } else {
+                this.value = input.replace(/(\d{4})(\d{3})(\d{0,3})/, "$1-$2-$3");
+            }
+        });
+        document.getElementById("submitBtn").addEventListener("click", function (event) {
+            event.preventDefault();
+
+            const name = document.getElementById("name").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const mobile = document.getElementById("mobile").value.trim();
+            const role = document.getElementById("role").value;
+            const availability = document.getElementById("availability").value.trim();
+            const message = document.getElementById("message").value.trim();
+
+            if (!name || !email || !mobile || !role || !message) {
+                alert("Please fill in all required fields.");
+                return;
+            }
+
+            alert(`Thank you, ${name}! Your volunteer application has been submitted successfully.`);
+
+            // Clear the form
+            document.querySelectorAll(".volunteer-container input, .volunteer-container textarea, .volunteer-container select").forEach(input => input.value = "");
+
+            // Redirect to homepage after 2 seconds
+            setTimeout(() => {
+                window.location.href = "index.html";
+            }, 2000);
+        });
+    </script>
+</body>
+
+</html>

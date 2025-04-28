@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://fonts.googleapis.com/css?family=Baloo%202' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Nunito' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet'>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="donation.css">
+    <link rel="icon" type="image/x-icon" href="./images/PetSocietyMainLogo.png">
+    <title>Pet Society | Donate</title>
+</head>
+
+<body>
+    <section id="NavSection">
+
+    </section>
+
+    <section id="DonationSection">
+
+        <div class="donation-content">
+
+            <div class="gallery-filled">
+                <div class="gallery-container">
+                    <div class="gallery-slide"></div> <!-- Will be filled dynamically -->
+                </div>
+                <button class="gallery-prev" onclick="moveSlide(-1)">&#10094;</button>
+                <button class="gallery-next" onclick="moveSlide(1)">&#10095;</button>
+            </div>
+            <div class="donation-form">
+                <div class="donation-container">
+                    <h1>Donate Online</h1>
+                    <p>Help us help more animals.
+                        The shelter and all our programs and campaigns are funded solely by donations. You can donate
+                        any amount via bank deposit or online.
+                    </p>
+                </div>
+                <div class="donation-container">
+                    <label for="first-name">First Name:</label>
+                    <input type="text" id="first-name" placeholder="First name" required />
+                </div>
+                <div class="donation-container">
+                    <label for="last-name">Last Name:</label>
+                    <input type="text" id="last-name" placeholder="Last name" required />
+                </div>
+                <div class="donation-container">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" placeholder="Email" required />
+                </div>
+                <div class="donation-container">
+                    <label for="phone">Mobile Number:</label>
+                    <input type="tel" id="mobile" placeholder="ex. 0999-999-9999" pattern="\d*" inputmode="numeric"
+                        required />
+                </div>
+                <div class="donation-container">
+                    <label for="amount">Amount:</label>
+                    <input type="number" id="amount" required />
+                </div>
+                <button id="donateBtn">Submit</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="FooterSection">
+
+    </section>
+
+    <script src="./index.js"></script>
+    <script>
+        document.getElementById("mobile").addEventListener("input", function () {
+            let input = this.value.replace(/\D/g, ""); // Remove non-digit characters
+            if (input.length <= 4) {
+                this.value = input; // If 4 or fewer digits, just show them
+            } else if (input.length <= 7) {
+                this.value = input.replace(/(\d{4})(\d{0,3})/, "$1-$2"); // Format as 0999-999
+            } else {
+                this.value = input.replace(/(\d{4})(\d{3})(\d{0,3})/, "$1-$2-$3"); // Format as 0999-999-9999
+            }
+        });
+        document.getElementById("donateBtn").addEventListener("click", function (event) {
+            event.preventDefault(); // Prevent form submission
+
+            const firstName = document.getElementById("first-name").value.trim();
+            const lastName = document.getElementById("last-name").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const phone = document.getElementById("phone").value.trim();
+            const amount = document.getElementById("amount").value.trim();
+
+            if (!firstName || !lastName || !email || !phone || !amount) {
+                alert("Please fill in all required fields.");
+                return;
+            }
+
+            alert(`Thank you, ${firstName}! Your donation has been submitted successfully.`);
+
+            // Clear the form
+            document.querySelectorAll(".donation-container input").forEach(input => input.value = "");
+
+            // Redirect to homepage after 2 seconds
+            setTimeout(() => {
+                window.location.href = "index.html";
+            }, 2000);
+        });
+    </script>
+</body>
+
+</html>

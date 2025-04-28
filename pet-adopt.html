@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://fonts.googleapis.com/css?family=Baloo%202' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Nunito' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet'>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="adoption.css">
+    <link rel="icon" type="image/x-icon" href="./images/PetSocietyMainLogo.png">
+    <title>Pet Society | Adopt Pet</title>
+</head>
+
+<body>
+    <section id="NavSection"></section>
+    <section id="AdoptionSection">
+        <div class="adoption-container container-1">
+            <h2>Why Adopt?</h2>
+            <p>Adopting a pet is a fulfilling experience. You give an animal a second chance at life and gain a loyal
+                companion. Here are some reasons why adoption is the best choice:</p>
+
+            <div class="reasons-list">
+                <div class="reason-item">
+                    <h3>Save a Life</h3>
+                    <p>By adopting, you help reduce overcrowding in shelters and give a pet a second chance.</p>
+                </div>
+
+                <div class="reason-item">
+                    <h3>Already Trained</h3>
+                    <p>Many shelter pets are house-trained or litter-box trained, saving you time and effort.</p>
+                </div>
+
+                <div class="reason-item">
+                    <h3>Cost-Effective</h3>
+                    <p>Adoption fees are lower than buying from breeders, and they often cover vaccinations,
+                        microchipping, and more!</p>
+                </div>
+
+                <div class="reason-item">
+                    <h3>Support a Good Cause</h3>
+                    <p>Your adoption fee helps shelters continue rescuing and caring for more animals.</p>
+                </div>
+
+                <div class="reason-item">
+                    <h3>Variety of Pets</h3>
+                    <p>From dogs and cats to rabbits and guinea pigs, shelters offer pets of all ages, breeds, and
+                        sizes.</p>
+                </div>
+
+                <div class="reason-item">
+                    <h3>Win-Win</h3>
+                    <p>Not only do you improve a pet’s life, but you’ll also gain a loving companion who will be forever
+                        grateful.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="adoption-container container-2">
+            <div class="adoption-item">
+                <div class="adoption-card">
+                    <img src="./images/dogs/Husky-1.jpg" alt="Roberto">
+                    <h3>Roberto</h3>
+                </div>
+                <div class="adoption-card">
+                    <img src="./images/cats/Persian-cat-1.jpg" alt="Ulbert">
+                    <h3>Ulbert</h3>
+                </div>
+                <div class="adoption-card">
+                    <img src="./images/cats/Victoria-cat.jpg" alt="Victoria">
+                    <h3>Victoria</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="AdoptableSection">
+        <h2>Adoptable Pets</h2>
+        <div class="filter-buttons">
+            <button id="cat-filter">Cats</button>
+            <button id="dog-filter">Dogs</button>
+            <button id="all-filter">All Pets</button>
+
+            <select id="breed-filter">
+                <option value="">Select Breed</option>
+                <option value="Siamese Cat">Siamese Cat</option>
+                <option value="Persian Cat">Persian Cat</option>
+                <option value="German Shepherd">German Shepherd</option>
+                <option value="Husky">Husky</option>
+                <option value="Stray Cat">Stray Cat</option>
+            </select>
+
+            <select id="age-filter">
+                <option value="">Select Age</option>
+                <option value="1 year">1 year</option>
+                <option value="2 years">2 years</option>
+                <option value="3 years">3 years</option>
+            </select>
+        </div>
+        <div class="pets-flex">
+            <!-- Pet cards will be dynamically added here -->
+        </div>
+    </section>
+    <section id="FooterSection"></section>
+    <script src="./index.js"></script>
+    <script src="pet-adopt.js"></script>
+</body>
+
+</html>
